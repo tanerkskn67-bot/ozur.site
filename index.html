@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Özür Dilerim</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial;
+    overflow: hidden;
+}
+
+/* GİRİŞ */
+#intro {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+    text-align: center;
+    padding: 20px;
+}
+
+/* ANA */
+#main {
+    display: none;
+    text-align: center;
+    padding: 50px;
+    background: linear-gradient(to right, #ff9a9e, #fad0c4);
+    height: 100vh;
+}
+
+.container {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    max-width: 500px;
+    margin: auto;
+}
+
+h1 {
+    color: #e74c3c;
+}
+
+button {
+    background: #e74c3c;
+    color: white;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.hidden { display: none; }
+
+/* FOTO */
+.photo-section {
+    margin-top: 30px;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.photo-grid {
+    display: grid;
+    gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.photo-grid img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 15px;
+    display: block;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- GİRİŞ -->
+<div id="intro">
+    <div id="text"></div>
+</div>
+
+<!-- ANA -->
+<div id="main">
+    <div class="container">
+        <h1>Özür Dilerim 💔</h1>
+        <p>
+            Kalbimde çok özel bir yerin var…  
+            Seni kırdığım için gerçekten çok üzgünüm.  
+            Hayatım, yaptığım ve yapamadığım şeyler için çok üzgünüm…  
+            Yaptığım hataların farkındayım…  
+            Ve bunu telafi etmek istiyorum.  
+            Seni kaybetmek istemiyorum…
+        </p>
+
+        <button onclick="showFinal()">Beni affeder misin? 🥺</button>
+        <p style="margin-top: 20px;">
+            <a href="https://tanerkskn67-bot.github.io/ozur.site/" target="_blank" rel="noopener noreferrer">Web sitesini buradan ziyaret et</a>
+        </p>
+
+        <p id="msg" class="hidden">
+            Seni gerçekten çok seviyorum… ❤️  
+            Sensiz her şey eksik kalıyor.  
+            Lütfen beni affet sevgilim…
+        </p>
+    </div>
+    <div class="photo-section hidden">
+        <div class="photo-grid">
+            <img src="images/photo1.jpg" alt="Anımız">
+            <img src="images/photo2.jpg" alt="Çiçek">
+        </div>
+    </div>
+</div>
+
+<!-- MÜZİK -->
+<iframe id="music" width="0" height="0" allow="autoplay"></iframe>
+
+<script>
+let message = "Bazen insan en çok sevdiğini kırar...\nAma en çok da onu kaybetmekten korkar.\nÇünkü bazı insanlar...\nGerçekten vazgeçilmezdir.";
+let i = 0;
+
+function typeWriter() {
+    if (i < message.length) {
+        document.getElementById("text").innerHTML += message.charAt(i);
+        i++;
+        setTimeout(typeWriter, 55);
+    } else {
+        setTimeout(startMain, 1500);
+    }
+}
+
+function startMain() {
+    document.getElementById("intro").style.display = "none";
+    document.getElementById("main").style.display = "block";
+    document.body.style.overflow = "auto";
+
+    document.getElementById("music").src =
+    "https://www.youtube.com/embed/0KxQ0YqF9j0?autoplay=1&loop=1&playlist=0KxQ0YqF9j0";
+}
+
+function showFinal() {
+    document.getElementById("msg").classList.remove("hidden");
+
+    setTimeout(() => {
+        let photoSection = document.querySelector(".photo-section");
+        photoSection.classList.remove("hidden");
+    }, 1000);
+}
+
+// BAŞLAT
+typeWriter();
+</script>
+
+</body>
+</html>
