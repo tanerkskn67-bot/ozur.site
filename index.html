@@ -56,6 +56,12 @@ button {
     cursor: pointer;
 }
 
+audio {
+    width: 100%;
+    margin-top: 20px;
+    border-radius: 12px;
+}
+
 .hidden { display: none; }
 
 /* FOTO */
@@ -116,14 +122,17 @@ button {
     </div>
     <div class="photo-section hidden">
         <div class="photo-grid">
-            <img src="images/photo1.jpg" alt="Anımız">
-            <img src="images/photo2.jpg" alt="Çiçek">
+            <img src="https://picsum.photos/id/237/720/540" alt="Anımız">
+            <img src="https://picsum.photos/id/238/720/540" alt="Çiçek">
         </div>
     </div>
 </div>
 
 <!-- MÜZİK -->
-<iframe id="music" width="0" height="0" allow="autoplay"></iframe>
+<audio id="music" class="hidden" controls preload="metadata">
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    Tarayıcınız ses çalmayı desteklemiyor.
+</audio>
 
 <script>
 let message = "Bazen insan en çok sevdiğini kırar...\nAma en çok da onu kaybetmekten korkar.\nÇünkü bazı insanlar...\nGerçekten vazgeçilmezdir.";
@@ -150,11 +159,15 @@ function startMain() {
 
 function showFinal() {
     document.getElementById("msg").classList.remove("hidden");
+    let music = document.getElementById("music");
+    let photoSection = document.querySelector(".photo-section");
 
-    setTimeout(() => {
-        let photoSection = document.querySelector(".photo-section");
-        photoSection.classList.remove("hidden");
-    }, 1000);
+    music.classList.remove("hidden");
+    photoSection.classList.remove("hidden");
+
+    music.play().catch(() => {
+        // tarayıcı otomatik çalmayı engellerse bu kısım boş kalır
+    });
 }
 
 // BAŞLAT
