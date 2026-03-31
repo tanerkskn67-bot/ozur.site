@@ -1,4 +1,3 @@
-# ozur.site
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -60,16 +59,25 @@ button {
 .hidden { display: none; }
 
 /* FOTO */
-#photo {
-    margin-top: 20px;
-    opacity: 0;
-    transform: scale(0.9);
-    transition: opacity 2s, transform 2s;
+.photo-section {
+    margin-top: 30px;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-#photo img {
+.photo-grid {
+    display: grid;
+    gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.photo-grid img {
     width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
     border-radius: 15px;
+    display: block;
 }
 
 </style>
@@ -96,16 +104,20 @@ button {
         </p>
 
         <button onclick="showFinal()">Beni affeder misin? 🥺</button>
+        <p style="margin-top: 20px;">
+            <a href="https://tanerkskn67-bot.github.io/ozur.site/" target="_blank" rel="noopener noreferrer">Web sitesini buradan ziyaret et</a>
+        </p>
 
         <p id="msg" class="hidden">
             Seni gerçekten çok seviyorum… ❤️  
             Sensiz her şey eksik kalıyor.  
             Lütfen beni affet sevgilim…
         </p>
-
-        <!-- FOTO -->
-        <div id="photo">
-            <img src="foto.jpg" alt="Anımız">
+    </div>
+    <div class="photo-section hidden">
+        <div class="photo-grid">
+            <img src="images/photo1.jpg" alt="Anımız">
+            <img src="images/photo2.jpg" alt="Çiçek">
         </div>
     </div>
 </div>
@@ -140,9 +152,8 @@ function showFinal() {
     document.getElementById("msg").classList.remove("hidden");
 
     setTimeout(() => {
-        let photo = document.getElementById("photo");
-        photo.style.opacity = 1;
-        photo.style.transform = "scale(1)";
+        let photoSection = document.querySelector(".photo-section");
+        photoSection.classList.remove("hidden");
     }, 1000);
 }
 
